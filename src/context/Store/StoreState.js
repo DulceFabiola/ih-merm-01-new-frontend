@@ -44,6 +44,12 @@ const StoreState = (props) => {
       payload: selectedStore,
     });
   };
+
+  //CREAR TIENDA
+  const createStore = async (form) => {
+    const res = await axiosClient.post("stores/create", form);
+    console.log(res);
+  };
   //4.RETORNO
   return (
     <StoreContext.Provider
@@ -54,6 +60,7 @@ const StoreState = (props) => {
         changeText,
         getStores,
         getStore,
+        createStore,
       }}
     >
       {props.children}

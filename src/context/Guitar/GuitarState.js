@@ -66,6 +66,11 @@ const GuitarState = (props) => {
       payload: selectedGuitar,
     });
   };
+  //CREAR GUITARRA
+  const createGuitar = async (form) => {
+    const res = await axiosClient.post("guitars/create", form);
+    console.log(res);
+  };
 
   //4.RETORNO
   //para poder transmitir la info necesitamos un provider: El cual podra distribuir el estado global al resto de los componentes
@@ -81,6 +86,7 @@ const GuitarState = (props) => {
         changeText,
         getGuitars,
         getGuitar,
+        createGuitar,
       }}
     >
       {/* Todos los componentes que esten en medio, tendran acceso al provider

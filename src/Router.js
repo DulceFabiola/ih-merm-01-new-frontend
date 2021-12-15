@@ -11,6 +11,8 @@ import StoreState from "./context/Store/StoreState";
 import Stores from "./components/Stores";
 import Single from "./components/Guitars/Single";
 import SingleStore from "./components/Stores/SingleStore";
+import CreateGuitar from "./components/Guitars/Create";
+import CreateStore from "./components/Stores/CreateStore";
 //2.FUNCIÓN
 const Router = () => {
   return (
@@ -28,8 +30,10 @@ const Router = () => {
                 {/* localhost:3000/iniciar-sesion */}
                 <Route path="iniciar-sesion" element={<Login />} />
                 <Route path="guitarras" element={<Guitars />} />
+                <Route path="guitarras/crear" element={<CreateGuitar />} />
                 <Route path="guitarras/:id" element={<Single />} />
                 <Route path="tiendas" element={<Stores />} />
+                <Route path="tiendas/crear" element={<CreateStore />} />
                 <Route path="tiendas/:id" element={<SingleStore />} />
               </Route>
             </Routes>
