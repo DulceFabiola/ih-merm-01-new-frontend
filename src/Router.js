@@ -16,6 +16,9 @@ import CreateStore from "./components/Stores/CreateStore";
 import UserState from "./context/User/UserState";
 import Edit from "./components/Guitars/Edit";
 import EditStore from "./components/Stores/EditStore";
+import Auth from "./routes/Auth";
+import Private from "./routes/Private";
+import Profile from "./components/User/Profile";
 
 //2.FUNCIÓN
 const Router = () => {
@@ -30,10 +33,30 @@ const Router = () => {
                 <Route path="/" element={<Layout />}>
                   {/* localhost:3000/ */}
                   <Route index element={<Home />} />
+                  {/* 1.Rutas de autenticacion
+                  Evitan que un usuari ologeado pueda entrar a Register y Login
+                   */}
                   {/* localhost:3000/registro */}
-                  <Route path="registro" element={<Register />} />
+                  {/* localhost:3000/registro */}
+                  <Route
+                    path="registro" //path indica cual es la url a la q quiero acceder
+                    element={
+                      <Auth
+                        component={Register} //element paso un componente que recibe un component
+                      />
+                    }
+                  />
                   {/* localhost:3000/iniciar-sesion */}
-                  <Route path="iniciar-sesion" element={<Login />} />
+                  {/* localhost:3000/registro */}
+                  <Route
+                    path="iniciar-sesion"
+                    element={<Auth component={Login} />}
+                  />
+                  {/* localhost:3000/profile */}
+                  <Route
+                    path="profile"
+                    element={<Private component={Profile} />}
+                  />
                   <Route path="guitarras" element={<Guitars />} />
                   <Route path="guitarras/crear" element={<CreateGuitar />} />
                   <Route path="guitarras/:id" element={<Single />} />
