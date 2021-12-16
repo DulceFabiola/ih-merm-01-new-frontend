@@ -44,7 +44,7 @@ export default function Create() {
           <div class="bg-white py-6 px-4 space-y-6 sm:p-6">
             <div>
               <h3 class="text-lg leading-6 font-medium text-gray-900">
-                Personal Information
+                Crear Guitarra
               </h3>
               <p class="mt-1 text-sm text-gray-500">
                 Use a permanent address where you can recieve mail.
