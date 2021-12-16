@@ -13,33 +13,36 @@ import Single from "./components/Guitars/Single";
 import SingleStore from "./components/Stores/SingleStore";
 import CreateGuitar from "./components/Guitars/Create";
 import CreateStore from "./components/Stores/CreateStore";
+import UserState from "./context/User/UserState";
 //2.FUNCIÓN
 const Router = () => {
   return (
     <>
       {/* GuitarState debe ser el padre de BrowserRouter ya que esta pasando todos los datos a todos los componentes */}
-      <StoreState>
-        <GuitarState>
-          <BrowserRouter>
-            <Routes>
-              <Route path="/" element={<Layout />}>
-                {/* localhost:3000/ */}
-                <Route index element={<Home />} />
-                {/* localhost:3000/registro */}
-                <Route path="registro" element={<Register />} />
-                {/* localhost:3000/iniciar-sesion */}
-                <Route path="iniciar-sesion" element={<Login />} />
-                <Route path="guitarras" element={<Guitars />} />
-                <Route path="guitarras/crear" element={<CreateGuitar />} />
-                <Route path="guitarras/:id" element={<Single />} />
-                <Route path="tiendas" element={<Stores />} />
-                <Route path="tiendas/crear" element={<CreateStore />} />
-                <Route path="tiendas/:id" element={<SingleStore />} />
-              </Route>
-            </Routes>
-          </BrowserRouter>
-        </GuitarState>
-      </StoreState>
+      <UserState>
+        <StoreState>
+          <GuitarState>
+            <BrowserRouter>
+              <Routes>
+                <Route path="/" element={<Layout />}>
+                  {/* localhost:3000/ */}
+                  <Route index element={<Home />} />
+                  {/* localhost:3000/registro */}
+                  <Route path="registro" element={<Register />} />
+                  {/* localhost:3000/iniciar-sesion */}
+                  <Route path="iniciar-sesion" element={<Login />} />
+                  <Route path="guitarras" element={<Guitars />} />
+                  <Route path="guitarras/crear" element={<CreateGuitar />} />
+                  <Route path="guitarras/:id" element={<Single />} />
+                  <Route path="tiendas" element={<Stores />} />
+                  <Route path="tiendas/crear" element={<CreateStore />} />
+                  <Route path="tiendas/:id" element={<SingleStore />} />
+                </Route>
+              </Routes>
+            </BrowserRouter>
+          </GuitarState>
+        </StoreState>
+      </UserState>
     </>
   );
 };

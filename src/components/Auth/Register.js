@@ -1,8 +1,30 @@
 // ./client/src/Auth/Register.js
-import React from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
-
+import UserContext from "./../../context/User/UserContext";
 export default function Register() {
+  const ctx = useContext(UserContext);
+  const { registerUser } = ctx;
+  //ESTADO LOCAL cuando trabajamos con un formulario
+  //--->UseState
+  const [newUser, setNewUser] = useState({
+    nombre: "",
+    email: "",
+    password: "",
+    confirmarpassword: "",
+  });
+  const handleChange = (e) => {
+    e.preventDefault();
+    setNewUser({
+      ...newUser,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    registerUser(newUser);
+  };
   return (
     <div className="flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
@@ -25,7 +47,12 @@ export default function Register() {
 
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-          <form className="space-y-6">
+          <form
+            onSubmit={(event) => {
+              handleSubmit(event);
+            }}
+            className="space-y-6"
+          >
             <div>
               <label
                 for="password"
@@ -35,7 +62,10 @@ export default function Register() {
               </label>
               <div className="mt-1">
                 <input
-                  name="name"
+                  onChange={(event) => {
+                    handleChange(event);
+                  }}
+                  name="nombre"
                   type="text"
                   className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 />
@@ -51,6 +81,9 @@ export default function Register() {
               </label>
               <div className="mt-1">
                 <input
+                  onChange={(event) => {
+                    handleChange(event);
+                  }}
                   name="email"
                   type="email"
                   className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
@@ -67,6 +100,9 @@ export default function Register() {
               </label>
               <div className="mt-1">
                 <input
+                  onChange={(event) => {
+                    handleChange(event);
+                  }}
                   name="password"
                   type="password"
                   required
@@ -84,7 +120,10 @@ export default function Register() {
               </label>
               <div className="mt-1">
                 <input
-                  name="confirm-password"
+                  onChange={(event) => {
+                    handleChange(event);
+                  }}
+                  name="confirmarpassword"
                   type="password"
                   required
                   className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
@@ -97,7 +136,7 @@ export default function Register() {
                 type="submit"
                 className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-500 hover:bg-blue-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
               >
-                Acceder a tu cuenta
+                Crear cuenta
               </button>
             </div>
           </form>
