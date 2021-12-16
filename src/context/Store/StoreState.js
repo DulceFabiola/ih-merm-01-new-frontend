@@ -50,6 +50,13 @@ const StoreState = (props) => {
     const res = await axiosClient.post("stores/create", form);
     console.log(res);
   };
+
+  //EDITAR TIENDA
+  const updateStore = async (form, idStore) => {
+    const res = await axiosClient.put(`stores/edit/${idStore}`, form);
+
+    console.log(res);
+  };
   //4.RETORNO
   return (
     <StoreContext.Provider
@@ -61,6 +68,7 @@ const StoreState = (props) => {
         getStores,
         getStore,
         createStore,
+        updateStore,
       }}
     >
       {props.children}

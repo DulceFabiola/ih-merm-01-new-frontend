@@ -14,6 +14,9 @@ import SingleStore from "./components/Stores/SingleStore";
 import CreateGuitar from "./components/Guitars/Create";
 import CreateStore from "./components/Stores/CreateStore";
 import UserState from "./context/User/UserState";
+import Edit from "./components/Guitars/Edit";
+import EditStore from "./components/Stores/EditStore";
+
 //2.FUNCIÓN
 const Router = () => {
   return (
@@ -34,9 +37,11 @@ const Router = () => {
                   <Route path="guitarras" element={<Guitars />} />
                   <Route path="guitarras/crear" element={<CreateGuitar />} />
                   <Route path="guitarras/:id" element={<Single />} />
+                  <Route path="guitarras/:id/editar" element={<Edit />} />
                   <Route path="tiendas" element={<Stores />} />
                   <Route path="tiendas/crear" element={<CreateStore />} />
                   <Route path="tiendas/:id" element={<SingleStore />} />
+                  <Route path="tiendas/:id/editar" element={<EditStore />} />
                 </Route>
               </Routes>
             </BrowserRouter>
